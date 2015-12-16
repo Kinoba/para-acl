@@ -1,0 +1,32 @@
+.page-title
+  %h1= @component.name
+
+.page-content-wrap
+  .well
+    = fa_icon 'info-circle'
+    = @component.description
+
+  = para_form_for @components_roles, url: @component.path, as: :components_roles do |form|
+    = panel do |panel|
+      = panel.header do
+        = add_button_for(@component, :resources, @component.model)
+
+      = resources_table(component: @component, model: @component.model, actions: false) do |table|
+        = table.header do
+          = table.header_for('')
+
+          - @components_roles.roles.each do |role|
+            = table.header_for do
+              = link_to @component.relation_path(role, action: :edit) do
+                = role.name
+                = fa_icon 'pencil'
+
+        = table.rows(@components_roles.resources) do |component, component_roles|
+          = table.data_for(component.name)
+
+          - component_roles.each do |role, component_role|
+            = table.data_for do
+              = form.fields_for :resources, [component_role] do |component_role_fields|
+                .checkbox= component_role_fields.input_field :allow
+
+    = form.actions(only: [:submit, :cancel])

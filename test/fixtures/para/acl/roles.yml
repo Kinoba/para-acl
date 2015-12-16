@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  authorize_new_components: false
+
+two:
+  name: MyString
+  authorize_new_components: false

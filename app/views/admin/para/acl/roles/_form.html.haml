@@ -1,0 +1,15 @@
+= para_form_for(resource) do |form|
+  = form.tabs do |tabs|
+    = tabs.tab :role do
+      = form.input :name
+      = form.input :authorize_new_components, hint: t('simple_form.hints.para/acl/role.authorize_new_components')
+      = form.input :users, as: :selectize
+
+    - if resource.persisted?
+      = tabs.tab :destroy_role do
+        = form.input :id, label: t('para.shared.destroy') do
+          = link_to @component.relation_path(resource), method: :delete, confirm: t('para.confirmation.shared.destroy'), class: 'btn btn-danger' do
+            = fa_icon 'times'
+            = t('para.shared.destroy')
+
+  = form.actions

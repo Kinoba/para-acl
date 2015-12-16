@@ -1,0 +1,39 @@
+fr:
+  admin:
+    acl_roles:
+      name: "Gestion des droits d'accès"
+      description: |
+        Le tableau ci-dessous vous permet de gérer les droits d'accès des
+        groupes d'administrateurs aux différentes sections de le console
+        d'administration.
+        Cochez les cases nécessaires puis cliquez sur "Enregistrer"
+
+  forms:
+    tabs:
+      para/acl/role:
+        role: "Modification"
+        destroy_role: "Suppression"
+
+  activemodel:
+    models:
+      para/acl/component_roles_collection:
+        one: "Droits d'accès"
+        other: "Droits d'accès"
+
+  activerecord:
+    attributes:
+      para/acl/role:
+        name: "Nom"
+        authorize_new_components: "Donner automatiquement accès au nouveaux composant de l'administration"
+        users: "Administrateurs concernés"
+
+  simple_form:
+    hints:
+      para/acl/role:
+        authorize_new_components: |
+          Lorsqu'une nouvelle section est ajoutée à la console d'administration
+          par l'équipe de développement, cette option permet que ce type
+          d'utilisateur y ait automatiquement accès.
+          Si cette case est décochée, lors de l'ajout d'un nouveau composant
+          dans la console d'administration, il vous faudra manuellement en
+          autoriser l'accès à ce type d'utilisateur.
