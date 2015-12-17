@@ -11,11 +11,11 @@ module Para
         can :access, :admin
 
         # Bypass all authorizations if disabled from configuration
-        if Para::Acl.enable_authorization
-          process_authorizations
-        else
-          can :manage, :all
+        if Para::Acl.bypass_admin_authorization
+          return can :manage, :all
         end
+
+        process_authorizations
       end
 
       private
@@ -26,7 +26,7 @@ module Para
         can :manage, :all
 
         role.role_components.each do |role_component|
-          unless role_component.allow
+          unless role_component.allow?
             cannot :manage, Para::Component::Base, id: role_component.component_id
           end
         end

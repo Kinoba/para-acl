@@ -27,6 +27,9 @@
           - component_roles.each do |role, component_role|
             = table.data_for do
               = form.fields_for :resources, [component_role] do |component_role_fields|
-                .checkbox= component_role_fields.input_field :allow
+                - disabled = current_admin.respond_to?(:role) && current_admin.role == role && AclRolesComponent === component_role.component
+                .checkbox{ class: ('disabled' if disabled) }
+                  = component_role_fields.input_field :allow, disabled: disabled
+
 
     = form.actions(only: [:submit, :cancel])

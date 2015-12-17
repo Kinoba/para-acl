@@ -9,7 +9,7 @@ to which components.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'para-acl'
+gem 'para-acl', github: 'para-cms/para-acl'
 ```
 
 And then execute:
@@ -23,11 +23,12 @@ Or install it yourself as:
 ## Usage
 
 Use the install generator to copy the migrations, create the super admin role.
-Note : use the `-m` option to automatically migrate after the migrations are copied.
 
-```ruby
-rails g para:acl:install -m
-```
+_Note : the generator needs to update the database schema and insert data in
+your database to make all existing admins have the defaul Super Admin role.
+So migrations will be copied and automatically run._
+
+    $ rails g para:acl:install
 
 Add the plugin to your `config/initializers/para.rb` file :
 
@@ -50,7 +51,7 @@ You can disable the whole authorization system and allow for anybody to
 access any component by configuring the following setting in your `config/initializers/para.rb` :
 
 ```ruby
-config.acl.enable_authorization = false
+config.acl.bypass_admin_authorization = true
 ```
 
 ## Contributing

@@ -2,7 +2,7 @@ module Para
   module Acl
     class Role < ActiveRecord::Base
       has_many :user_roles, dependent: :destroy
-      has_many :users, through: :user_roles, source_type: 'AdminUser'
+      has_many :users, through: :user_roles, source_type: Para.config.acl.admin_user_class
 
       has_many :role_components, dependent: :destroy
       has_many :components, through: :role_components

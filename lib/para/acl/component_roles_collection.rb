@@ -41,8 +41,7 @@ module Para
           hash[component] = {}
 
           roles.each do |role|
-            hash[component][role] = role_component = role.role_component_for(component)
-            role_component.save if role_component.new_record?
+            hash[component][role] = role_component_or_create_for(role, component)
           end
         end
       end
@@ -51,6 +50,15 @@ module Para
 
       def role_component_for(id)
         role_components[id.to_i]
+      end
+
+      def role_component_or_create_for(role, component)
+        role.role_component_for(component).tap do |role_component|
+          if role_component.new_record?
+            role_component.allow = role.authorize_new_components
+            role_component.save!
+          end
+        end
       end
 
       def role_components
