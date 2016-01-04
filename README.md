@@ -45,6 +45,24 @@ component :acl, :acl_roles
 Restart your server and access your new "Acl" component to manage roles and
 authorizations.
 
+### Deployment
+
+When you deploy your app, you may need to reset admins privileges and reassign
+roles on your deployment environment.
+
+All you need is to run the `para:acl:authorize_admins` rake task, that'll
+create the "Super Admin" role if it doesn't exist and assign that role to
+all existing admin users.
+
+For a production deployment, you'll run the following on your server :
+
+```bash
+rake RAILS_ENV=production para:acl:authorize_admins
+```
+
+Alternatively, you can manually create that role and assign the desired
+admin users to it from a remote rails console.
+
 ### Disable authorization to debug or fix an error
 
 You can disable the whole authorization system and allow for anybody to
