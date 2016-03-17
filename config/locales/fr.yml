@@ -7,6 +7,7 @@ fr:
         groupes d'administrateurs aux différentes sections de le console
         d'administration.
         Cochez les cases nécessaires puis cliquez sur "Enregistrer"
+      destroy: "Êtes-vous sûrs de vouloir supprimer le rôle %{role} ?"
 
   forms:
     tabs:
@@ -14,18 +15,20 @@ fr:
         role: "Modification"
         destroy_role: "Suppression"
 
-  activemodel:
+  activerecord: &models_translations
     models:
       para/acl/component_roles_collection:
         one: "Droits d'accès"
         other: "Droits d'accès"
 
-  activerecord:
     attributes:
       para/acl/role:
         name: "Nom"
         authorize_new_components: "Donner automatiquement accès au nouveaux composant de l'administration"
         users: "Administrateurs concernés"
+
+  activemodel:
+    <<: *models_translations
 
   simple_form:
     hints:
