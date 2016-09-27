@@ -1,4 +1,4 @@
-= para_form_for(resource) do |form|
+= para_form_for(resource, url: @component.relation_path(:role, id: resource.id)) do |form|
   = form.tabs do |tabs|
     = tabs.tab :role do
       = form.input :name
@@ -8,7 +8,7 @@
     - if resource.persisted?
       = tabs.tab :destroy_role do
         = form.input :id, label: t('para.shared.destroy') do
-          = link_to @component.relation_path(resource), method: :delete, class: 'btn btn-danger', data: { confirm: t('admin.acl_roles.destroy', role: resource.name) } do
+          = link_to @component.relation_path(:role, id: resource.id), method: :delete, class: 'btn btn-danger', data: { confirm: t('admin.acl_roles.destroy', role: resource.name) } do
             = fa_icon 'times'
             = t('para.shared.destroy')
 

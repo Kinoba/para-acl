@@ -8,4 +8,8 @@ class AclRolesComponent < Para::Component::Base
   def model_type
     '::Para::Acl::Role'
   end
+
+  def model
+    @model ||= model_type.constantize
+  end
 end
