@@ -1,5 +1,5 @@
 module AclRolesComponentDecorator
-  include Para::Component::CrudDecorator
+  include Para::Component::BaseDecorator
 
   def name
     I18n.t('admin.acl_roles.name')

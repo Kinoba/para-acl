@@ -1,4 +1,4 @@
-class AclRolesComponent < Para::Component::Crud
+class AclRolesComponent < Para::Component::Base
   register :acl_roles, self
 
   def resources

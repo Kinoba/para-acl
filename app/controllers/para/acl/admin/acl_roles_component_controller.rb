@@ -1,7 +1,7 @@
-module Admin
-  module Para
-    module Acl
-      class RolesComponentController < ::Para::Admin::ComponentController
+module Para
+  module Acl
+    module Admin
+      class AclRolesComponentController < ::Para::Admin::ComponentController
         def show
           @components_roles = ::Para::Acl::ComponentRolesCollection.new
         end

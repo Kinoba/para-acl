@@ -9,7 +9,7 @@
   = para_form_for @components_roles, url: @component.path, as: :components_roles do |form|
     = panel do |panel|
       = panel.header do
-        = add_button_for(@component, :resources, @component.model)
+        -# = add_button_for(@component, :resources, @component.model)
 
       = resources_table(component: @component, model: @component.model, actions: false) do |table|
         = table.header do
