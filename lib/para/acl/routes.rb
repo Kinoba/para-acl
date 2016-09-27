@@ -3,8 +3,8 @@ module Para
     class Routes < Para::Plugins::Routes
       def draw
         plugin :acl do
-          component :roles, path: :roles
-          crud_component :roles, path: :roles
+          component :acl_roles, path: :roles
+          crud_component :acl_roles, path: :roles
           patch "roles/:component_id" => "roles_component#update"
         end
       end
