@@ -4,13 +4,8 @@ module Para
       extend ActiveSupport::Concern
 
       included do
-        before_destroy :clean_role_components
-      end
-
-      private
-
-      def clean_role_components
-        ::Para::Acl::RoleComponent.where(component: self).destroy_all
+        has_many :role_components, dependent: :destroy
+        has_many :roles, through: :role_components
       end
     end
   end
