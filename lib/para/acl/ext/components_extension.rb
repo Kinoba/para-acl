@@ -4,10 +4,13 @@ module Para
       extend ActiveSupport::Concern
 
       included do
-        has_many :role_components, class_name: 'Para::Acl::RoleComponent',
-                                   foreign_key: :component_id,
-                                   dependent: :destroy
-        has_many :roles, through: :role_components
+        before_destroy :clean_role_components
+      end
+
+      private
+
+      def clean_role_components
+        ::Para::Acl::RoleComponent.where(component: self).destroy_all
       end
     end
   end
