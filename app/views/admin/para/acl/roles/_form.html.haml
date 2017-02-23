@@ -2,13 +2,13 @@
   = form.tabs do |tabs|
     = tabs.tab :role do
       = form.input :name
-      = form.input :authorize_new_components, wrapper: :horizontal_radio_and_checkboxes, hint: t('simple_form.hints.para/acl/role.authorize_new_components')
+      = form.input :authorize_new_components, wrapper: :vertical_radio_and_checkboxes, hint: t('simple_form.hints.para/acl/role.authorize_new_components')
       = form.input :users, as: :selectize
 
     - if resource.persisted?
       = tabs.tab :destroy_role do
-        = form.input :id, label: t('para.shared.destroy') do
-          = link_to @component.relation_path(:role, id: resource.id), method: :delete, class: 'btn btn-danger', data: { confirm: t('admin.acl_roles.destroy', role: resource.name) } do
+        = form.input :id, label: false do
+          = link_to @component.relation_path(:role, id: resource.id), method: :delete, class: 'btn btn-danger btn-shadow', data: { confirm: t('admin.acl_roles.destroy', role: resource.name) } do
             = fa_icon 'times'
             = t('para.shared.destroy')
 

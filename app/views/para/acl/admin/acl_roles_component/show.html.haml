@@ -1,17 +1,16 @@
-.page-title
+.page-title.row
   %h1= @component.name
 
-.page-content-wrap
+.page-content-wrap.form-fixed-actions
   .well
     = fa_icon 'info-circle'
     = @component.description
 
   = para_form_for @components_roles, url: @component.path, as: :components_roles do |form|
-    = panel do |panel|
-      = panel.header do
-        = icon_link_to t('para.shared.add'), @component.relation_path(:role, action: :new), icon: 'plus', class: 'btn btn-primary add-button'
+    .page-list-heading  
+      = icon_link_to t('para.shared.add'), @component.relation_path(:role, action: :new), icon: 'plus', class: 'btn btn-primary btn-shadow add-button'
 
-
+    .page-list-body
       = resources_table(component: @component, model: @component.model, actions: false) do |table|
         = table.header do
           = table.header_for('')
