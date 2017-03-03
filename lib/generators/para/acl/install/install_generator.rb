@@ -10,10 +10,10 @@ module Para
 
       def add_role_mixin_to_admin
         admin_user_class_file_path = File.join(
-          'app', 'models', "#{ admin_user_class_name.underscore }.rb"
+          'app', 'models', "#{ Para.config.acl.admin_user_class.underscore }.rb"
         )
 
-        inject_into_file admin_user_class_file_path, after: "< ActiveRecord::Base" do
+        inject_into_file admin_user_class_file_path, after: /< (ActiveRecord::Base|ApplicationRecord)/ do
           "\n  has_admin_role"
         end
       end
