@@ -7,8 +7,8 @@
     = @component.description
 
   = para_form_for @components_roles, url: @component.path, as: :components_roles do |form|
-    .page-list-heading  
-      = icon_link_to t('para.shared.add'), @component.relation_path(:role, action: :new), icon: 'plus', class: 'btn btn-primary btn-shadow add-button'
+    .page-list-heading
+      = icon_link_to t('para.shared.add'), @component.relation_path(:role, action: :new), class: 'btn btn-primary btn-shadow add-button'
 
     .page-list-body
       = resources_table(component: @component, model: @component.model, actions: false) do |table|
