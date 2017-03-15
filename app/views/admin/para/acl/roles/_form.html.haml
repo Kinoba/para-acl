@@ -1,4 +1,4 @@
-= para_form_for(resource, url: @component.relation_path(:role, id: resource.id)) do |form|
+= para_form_for(resource, url: @component.relation_path((resource.new_record? ? :roles : :role), id: resource.id)) do |form|
   = form.tabs do |tabs|
     = tabs.tab :role do
       = form.input :name
