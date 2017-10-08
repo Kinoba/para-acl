@@ -8,7 +8,8 @@ module Para
           has_one :user_role, as: :user,
                               class_name: 'Para::Acl::UserRole',
                               dependent: :destroy,
-                              autosave: true
+                              autosave: true,
+                              inverse_of: :user
 
           has_one :role,      through: :user_role
 
