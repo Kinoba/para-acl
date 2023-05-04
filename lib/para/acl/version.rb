@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Para
   module Acl
-    VERSION = "0.4.0"
+    VERSION = '1.0.0'
   end
 end
